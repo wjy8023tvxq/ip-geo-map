@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Geolocation Map</title>
+</head>
+<body>
+    <h1>Upload IP Log File</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="ipfile" accept=".txt" required>
+        <button type="submit">Upload and Process</button>
+    </form>
+
+    <% if (csvDownloadLink) { %>
+        <h2>Download Processed CSV</h2>
+        <a href="<%= csvDownloadLink %>">Download Mapping Data CSV</a>
+
+        <h2>Map Visualization</h2>
+        <p><strong>Note:</strong> After uploading the CSV to Google My Maps, please refresh this page to see the updated map.</p>
+        <iframe
+            width="100%"
+            height="600"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/d/u/0/embed?mid=1h_c0w1U4WJNMP4ag2tduv8fhzLgtL9I&ehbc=2E312F&cb=<%= Date.now() %>"
+            allowfullscreen>
+        </iframe>
+    <% } %>
+</body>
+</html>
